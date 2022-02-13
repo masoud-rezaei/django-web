@@ -1,0 +1,3 @@
+pipenv
+Django
+psycopg2-binary
