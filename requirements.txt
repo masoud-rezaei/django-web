@@ -1,4 +1,4 @@
-pipenv
 Django
 psycopg2-binary
 django-crispy-forms
+django-allauth

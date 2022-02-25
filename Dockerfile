@@ -3,10 +3,13 @@ ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 RUN mkdir /code
 WORKDIR /code
-ADD requirements.txt /code/     
+ADD requirements.txt /code/   
+RUN apk update
+RUN apk add --no-cache gcc python3-dev musl-dev
+RUN pip install --upgrade pip 
 RUN pip install  -r requirements.txt   
 ADD . /code/
-RUN pipenv install --system
+RUN pip install --system
 EXPOSE 8000
 CMD  python manage.py makemigrations --noinput && \
      python manage.py migrate --noinput &&\

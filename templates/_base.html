@@ -31,10 +31,10 @@
                     <a class="p-2 text-dark" href="{% url 'about' %}">About</a>
                     {% if user.is_authenticated %}
                         Chapter 6: Static Assets 95
-                        <a class="p-2 text-dark" href="{% url 'logout' %}">Log Out</a>
+                        <a class="p-2 text-dark" href="{% url 'account_logout' %}">Log Out</a>
                     {% else %}
-                        <a class="p-2 text-dark" href="{% url 'login' %}">Log In</a>
-                        <a class="btn btn-outline-primary" href="{% url 'signup' %}">Sign Up</a>
+                        <a class="p-2 text-dark" href="{% url 'account_login' %}">Log In</a>
+                        <a class="btn btn-outline-primary" href="{% url 'account_signup' %}">Sign Up</a>
                     {% endif %}
                 </nav>
             </div>
