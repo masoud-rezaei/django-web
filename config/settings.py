@@ -154,11 +154,15 @@ AUTHENTICATION_BACKENDS=(
     'django.contrib.auth.backends.ModelBackend',
     'allauth.account.auth_backends.AuthenticationBackend',
 )
-EMAILE_BACKEND='django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND='django.core.mail.backends.console.EmailBackend'
 
+DEFAULT_FROM_EMAIL='admin@khansharaf.net'
+#EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 ###########
 LOGIN_REDIRECT_URL='home'
 ACCOUNT_LOGOUT_REDIRECT='home'
 #LOGOUT_REDIRECT_URL='home'
+
+
 
