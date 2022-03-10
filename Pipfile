@@ -11,6 +11,7 @@ django-crispy-forms = "*"
 django-allauth = "*"
 environs = {extras = ["django"], version = "*"}
 uuid = "*"
+pillow = "*"
 
 [dev-packages]
 
