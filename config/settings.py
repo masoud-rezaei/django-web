@@ -48,9 +48,11 @@ INSTALLED_APPS = [
     'accounts',
     'pages',
     'books',
+    'debug_toolbar',
 ]
 
 MIDDLEWARE = [
+   
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -58,7 +60,10 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
+ 
 ]
+
 
 ROOT_URLCONF = 'config.urls'
 
@@ -170,3 +175,5 @@ MEDIA_URL='/media/'
 MEDIA_ROOT=str(BASE_DIR.joinpath('media'))
 
 
+#django_debug-toolbar
+INTERNAL_IPS='127.0.0.1'
