@@ -4,13 +4,16 @@
     Log Out
 {% endblock title %}
 {% block content %}
+<div class="pt-5">
     <h1>Log out</h1>
     <p>
         Are you sure you want to log out ?
+        <small class="text-muted">(you can login later)</small>
     </p>
     <form method='post' action='{% url  "account_logout" %}'>
         {% csrf_token %}
         {{ form|crispy }}
-        <button class="btn btn-danger" type="submit">log out</button>
+        <button class="btn btn-danger  rounded-pill" type="submit">log out</button>
+    </div>
     </form>
 {% endblock content %}

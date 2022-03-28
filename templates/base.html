@@ -1,53 +1,75 @@
 {% load static %}
+{% load i18n %}
 <!DOCTYPE <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>
-            {% block title %}
-                Bookstore
-            {% endblock title %}
-        </title>
-        <meta name="viewport"
-              content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <!--css-->
-        <link rel="stylesheet"
-              href="https://stackpath.bootstrapcdn.com/bootstrap/\ 4.5.0/css/bootstrap.min.css"
-              integrity="sha384-9aIt2nRpC12Uk9gS9baDl411\ NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
-              crossorigin="anonymous">
-        <link rel="stylesheet" href="{% static 'css/base.css' %}">
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
-    </head>
-    <body>
-        <header>
-            <!-- Fixed navbar -->
-            <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
-                <a href="{% url 'home' %}"
-                   class="navbar-brand my-0 mr-md-auto font-weight-normal">Bookstore</a>
-                <nav class="my-2 my-md-0 mr-md-3">
-                    <a class="p-2 text-dark" href="{% url 'book_list' %}">Books</a>
-                    <a class="p-2 text-dark" href="{% url 'about' %}">About</a>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title class="">
+        {% block title %}
+        Bookstore
+        {% endblock title %}
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!--css-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+</head>
+
+<body>
+    <header>
+        <!-- Fixed navbar -->
+        <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 
+            mb-3  border-bottom shadow bg-light ">
+            <a href="{% url 'home' %}"
+                class="navbar-brand my-0 mx-auto font-weight-normal fs-3 fst-italic">book introduction</a>
+            <nav class="navbar navbar-expand-lg navbar-light container   ">
+                <div class="mx-auto ">
+                    
+                    <a class="p-2 text-dark fs-5 text-decoration-none " href="{% url 'book_list' %}">Books</a>
+                    <a class="p-2 text-dark fs-5 text-decoration-none " href="{% url 'about' %}">About</a>
+                    <a class="p-2 text-dark fs-5 text-decoration-none " href="#contantpart">Contact</a>
                     {% if user.is_authenticated %}
-                        Chapter 6: Static Assets 95
-                        <a class="p-2 text-dark" href="{% url 'account_logout' %}">Log Out</a>
+                    Hi {{ user.email }}!
+                    <a class="btn btn-outline-danger  p-2 text-dark" href="{% url 'account_logout' %}">Log Out</a>
                     {% else %}
-                        <a class="p-2 text-dark" href="{% url 'account_login' %}">Log In</a>
-                        <a class="btn btn-outline-primary" href="{% url 'account_signup' %}">Sign Up</a>
+                    <a class="btn btn-outline-dark mx-4" href="{% url 'account_login' %}">Log In</a>
+                    <a class="btn btn-outline-dark" href="{% url 'account_signup' %}">Sign Up</a>
                     {% endif %}
-                </nav>
-            </div>
-        </header>
-        <div class="container">
-            {% block content %}
-            {% endblock content %}
+                </div>
+            </nav>
         </div>
-        <!-- JavaScript -->
-        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxF\ geH0kww/aWY76TfkUoSX" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/\ popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZ\ H81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/js/\ bootstrap.min.js" integrity="sha384-1CmrxMRARb6aLqgBO7yyAxTOQE2AKb\ 9GfXnEo760AUcUmFx3ibVJJAzGytlQcNXd" crossorigin="anonymous"></script>
-    </body>
+    </header>
+<!--back to top-->
+    <a href="#"
+        class="bg-warning text-dark d-flex rounded-circle justify-content-center align-item-center position-fixed"
+        style='width: 40px; height: 40px; right: 10px; bottom:10px;'>
+        <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" fill="currentColor" class="bi bi-arrow-up"
+            viewBox="0 0 16 16">
+            <path fill-rule="evenodd"
+                d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z" />
+        </svg>
+    </a>
+    <div class="container">
+        {% block content %}
+        {% endblock content %}
+    </div>
+    <!-- JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxF\ geH0kww/aWY76TfkUoSX" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/\ popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZ\ H81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
+</body>
+
 </html>

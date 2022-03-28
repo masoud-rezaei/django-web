@@ -5,10 +5,12 @@
     Log In
 {% endblock title %}
 {% block content %}
+<div class="w-25 ">
     <h2>Log In</h2>
     <form method="post" class="bootstrap4">
         {% csrf_token %}
         {{ form|crispy }}
-        <button class="btn btn-success" type="submit" style="background-color:black;color:white">Log In</button>
+        <button class="btn btn-success text-white  rounded-pill"  type="submit" >Log In</button>
     </form>
+<div>
 {% endblock content %}

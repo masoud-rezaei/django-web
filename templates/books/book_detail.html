@@ -1,26 +1,29 @@
 {% extends 'base.html' %}
 {% block title %}
-    {{ book.title }}
+{{ book.title }}
 {% endblock title %}
 {% block content %}
-    <div class="book-detail">
-        {% if book.cover %}
-        <img class="bookcover" src='{{ book.cover.url }}' alt="{{book.title}}">
-        {% endif %}
-        <h2>
-            <a href="">{{ book.title }}</a>
-        </h2>
-        <p>
-            Athour: {{ book.author }}
-        </p>
-        <p>
-            Price: {{ book.price }}
-        </p>
-        <div>
-            <h3>Reviews</h3>
-            <ul>
-                {% for review  in book.reviews.all  %}<li>{{ review.review }} ({{ review.author }})</li>{% endfor %}
-            </ul>
-        </div>
+<div class="book-detail text-secondary  overflow-auto row">
+    {% if book.cover %}
+<div class="col-6 align-items-center">   
+    <img class="bookcover  shadow w-100 h-75" src='{{ book.cover.url }}' alt="{{book.title}}">
+    {% endif %}
+    <p>
+        <a class= "text-center text-dark fs-3 text-decoration-none" href="">{{ book.title }}</a>
+    </p>
+</div> <div class="col-6">
+    <p class="fs-5">Description: {{ book.description }} </p>
+    <p class="text-success py-3 ">
+        Athour: {{ book.author }}
+    </p>
+    <p class="text-dark py-3">
+        Price: {{ book.price }}
+    </p></div>
+    <div class=" py-4"style="background-color: #e0e7e7;">
+        <h3 class="border alert text-danger w-50">Reviews</h3>
+        <ul class="list-unstyled text-primary">
+            {% for review  in book.reviews.all  %}<li class="text-decoration-none" >{{ review.review }} ({{ review.author }})</li>{% endfor %}
+        </ul>
     </div>
+</div>
 {% endblock content %}

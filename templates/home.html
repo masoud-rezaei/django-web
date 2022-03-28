@@ -1,30 +1,396 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load i18n %}
 {% block title %}
-    Home
+Home
 {% endblock title %}
 {% block content %}
+    {% trans 'translate this' %}
+<!--search-->
+<div class="py-4">
     <h1>Homepage</h1>
-    <form class="form-inline mt-2 mt-md-0"
-          action="{% url 'search_results' %}"
-          method="get">
-        <input name="q"
-               class="form-control mr-sm-2"
-               type="text"
-               placeholder="Search"
-               aria-label="Search">
+    <form class="form-inline mt-2 mt-md-1 " action="{% url 'search_results' %}" method="get">
+        <input name="q" class="form-control mr-sm-2 w-25  border border-warning" type="text" placeholder="Search"
+            aria-label="Search">
     </form>
-    <img class="bookcover" src="{% static  'images/webs.png' %}">
-    {% if user.is_authenticated %}
-        Hi {{ user.email }}!
-        <p>
-            <a href="{% url 'account_logout' %}">Log out</a>
+</div>
+<!--Introduction-->
+<div class='py-4'>
+    <section class='   container '>
+        <div class="row align-items-center ">
+            <div class='col-md-6'>
+                <h2 class='display-5'>
+                    Introducing the types of <span class="text-info">books</span> related to Python and <span
+                        class="text-warning">django</span> framework
+                </h2>
+            </div>
+            <figure class=" col-md-6 ">
+                <img class="bookcover  img-fluid w-75 h-100" src="{% static  'images/readbook.png' %}">
+                <figcaption class="figure-caption ">
+                    im am here to help you !!.
+                </figcaption>
+            </figure>
+
+        </div>
+    </section>
+</div>
+<!--Features-->
+<div class='py-4'>
+    <section class="container" style="background-color: #e4e4e4;">
+        <h2 class='display-5 text-center mb-4'>Features</h2>
+        <p class="text-center lead text-muted mb-5">
+            django is ....
         </p>
-    {% else %}
+        <div class='row g-4 pb-4'>
+            <div class=' col-xl-4 col-md-6'>
+                <div class='card text-center p-5'>
+                    <div class='card-body'>
+                        <svg class='mb-4' xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor"
+                            class="bi bi-safe" viewBox="0 0 16 16">
+                            <path
+                                d="M1 1.5A1.5 1.5 0 0 1 2.5 0h12A1.5 1.5 0 0 1 16 1.5v13a1.5 1.5 0 0 1-1.5 1.5h-12A1.5 1.5 0 0 1 1 14.5V13H.5a.5.5 0 0 1 0-1H1V8.5H.5a.5.5 0 0 1 0-1H1V4H.5a.5.5 0 0 1 0-1H1V1.5zM2.5 1a.5.5 0 0 0-.5.5v13a.5.5 0 0 0 .5.5h12a.5.5 0 0 0 .5-.5v-13a.5.5 0 0 0-.5-.5h-12z" />
+                            <path
+                                d="M13.5 6a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5zM4.828 4.464a.5.5 0 0 1 .708 0l1.09 1.09a3.003 3.003 0 0 1 3.476 0l1.09-1.09a.5.5 0 1 1 .707.708l-1.09 1.09c.74 1.037.74 2.44 0 3.476l1.09 1.09a.5.5 0 1 1-.707.708l-1.09-1.09a3.002 3.002 0 0 1-3.476 0l-1.09 1.09a.5.5 0 1 1-.708-.708l1.09-1.09a3.003 3.003 0 0 1 0-3.476l-1.09-1.09a.5.5 0 0 1 0-.708zM6.95 6.586a2 2 0 1 0 2.828 2.828A2 2 0 0 0 6.95 6.586z" />
+                        </svg>
+                        <h3 class='card-title mb-2'>safe</h3>
+                        <p class='card-text lead text-muted'>
+                            Django is designed to provide a powerful framework for automated website protection, helping
+                            developers avoid many common security errors.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class='col-xl-4 col-md-6'>
+                <div class='card text-center p-5'>
+                    <div class='card-body'>
+                        <svg class="mb-4" xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor"
+                            class="bi bi-translate" viewBox="0 0 16 16">
+                            <path
+                                d="M4.545 6.714 4.11 8H3l1.862-5h1.284L8 8H6.833l-.435-1.286H4.545zm1.634-.736L5.5 3.956h-.049l-.679 2.022H6.18z" />
+                            <path
+                                d="M0 2a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v3h3a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-3H2a2 2 0 0 1-2-2V2zm2-1a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h7a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H2zm7.138 9.995c.193.301.402.583.63.846-.748.575-1.673 1.001-2.768 1.292.178.217.451.635.555.867 1.125-.359 2.08-.844 2.886-1.494.777.665 1.739 1.165 2.93 1.472.133-.254.414-.673.629-.89-1.125-.253-2.057-.694-2.82-1.284.681-.747 1.222-1.651 1.621-2.757H14V8h-3v1.047h.765c-.318.844-.74 1.546-1.272 2.13a6.066 6.066 0 0 1-.415-.492 1.988 1.988 0 0 1-.94.31z" />
+                        </svg>
+                        <h3 class='card-title mb-2'>Multilingual Support</h3>
+                        <p class='card-text lead text-muted'>
+                            This allows the programmer and developer to develop websites that inherently support
+                            multiple world languages.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class='col-xl-4 col-md-6'>
+                <div class='card text-center p-5'>
+                    <div class='card-body'>
+                        <svg class="mb-4" xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor"
+                            class="bi bi-graph-up-arrow" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                d="M0 0h1v15h15v1H0V0Zm10 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V4.9l-3.613 4.417a.5.5 0 0 1-.74.037L7.06 6.767l-3.656 5.027a.5.5 0 0 1-.808-.588l4-5.5a.5.5 0 0 1 .758-.06l2.609 2.61L13.445 4H10.5a.5.5 0 0 1-.5-.5Z" />
+                        </svg>
+                        <h3 class='card-title mb-2'>Rapid development</h3>
+                        <p class='card-text lead text-muted'>
+                            Django's design philosophy is such that it allows programmers and developers to develop
+                            applications in the shortest possible time.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class='col-xl-4 col-md-6'>
+                <div class='card text-center p-5'>
+                    <div class='card-body'>
+                        <svg class="mb-4" xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor"
+                            class="bi bi-person" viewBox="0 0 16 16">
+                            <path
+                                d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z" />
+                        </svg>
+                        <h3 class='card-title mb-2'>control panel</h3>
+                        <p class='card-text lead text-muted'>
+                            the Django admin panel is installed automatically. This eliminates the need for the
+                            developer to manually create the admin panel.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class='col-xl-4 col-md-6'>
+                <div class='card text-center p-5'>
+                    <div class='card-body'>
+                        <svg class="mb-4" xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor"
+                            class="bi bi-activity" viewBox="0 0 16 16">
+
+                            <path fill-rule="evenodd"
+                                d="M10.854 6.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 8.793l2.646-2.647a.5.5 0 0 1 .708 0z" />
+                            <path
+                                d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z" />
+                            <path
+                                d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z" />
+                        </svg>
+                        <h3 class='card-title mb-2'>easy learn</h3>
+                        <p class='card-text lead text-muted'>
+                            learing the django is so easy.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class='col-xl-4 col-md-6'>
+                <div class='card text-center p-5'>
+                    <div class='card-body'>
+                        <svg class="mb-4" xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor"
+                            class="bi bi-activity" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                d="M6 2a.5.5 0 0 1 .47.33L10 12.036l1.53-4.208A.5.5 0 0 1 12 7.5h3.5a.5.5 0 0 1 0 1h-3.15l-1.88 5.17a.5.5 0 0 1-.94 0L6 3.964 4.47 8.171A.5.5 0 0 1 4 8.5H.5a.5.5 0 0 1 0-1h3.15l1.88-5.17A.5.5 0 0 1 6 2Z" />
+                        </svg>
+                        <h3 class='card-title mb-2'>all purpose</h3>
+                        <p class='card-text lead text-muted'>
+                            Django can be used to build almost any type of website.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+</section>
+<!--ads1-->
+<div class='py-4' style='background-color:#9aad72;'>
+    <section class='container '>
+        <div class=" row align-items-center ">
+            <div class='col-md-6'>
+                <h2 class='display-5 mb-4'>
+                    learn with us and build any website with <span class="text-info">django</span> related to Python and
+                    <span class="text-warning">django</span> framework
+                </h2>
+                <p class='lead text-muted mb-4'>
+                    you can start now with some youtube channel and learn django freely !
+                </p>
+                <div class='text-center text-md-start'>
+                    <a href='' class='link-secondary'>start</a>
+                </div>
+            </div>
+            <div class='col-md-6 '>
+                <img class=" img-fluid w-50 h-50" src="{% static  'images/django-logo.png' %}">
+            </div>
+        </div>
+    </section>
+</div>
+<!--ads2-->
+<div class='py-4' style='background-color:#746f75;'>
+    <section class='container '>
+        <div class=" row align-items-center ">
+            <div class='col-md-6 '>
+                <img class=" img-fluid w-50 h-50" src="{% static  'images/python-logo.png' %}">
+            </div>
+            <div class='col-md-6'>
+                <h2 class='display-5 mb-4'>
+                    learn with us and use this programming with <span class="text-info">python</span> and make evry
+                    things in your life ...
+                </h2>
+                <p class='lead text-muted mb-4'>
+                    you can start now with some youtube channel and learn python freely !
+                </p>
+                <div class='text-center text-md-start'>
+                    <a href='' class='link-secondary'>start</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+</div>
+<!--Ferquently questions-->
+<div class='py-4'>
+    <section class="container" style="background-color: #cccccc;">
+        <h2 class='display-5 text-center mb-4'>Frequently asked questions</h2>
+        <p class="text-center lead  mb-5">
+            questions that usually ask people, especially those who want to start.
+        </p>
+        <div class="accordion py-4" id="accordionPanelsStayOpenExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true"
+                        aria-controls="panelsStayOpen-collapseOne">
+                        what is python ?
+                    </button>
+                </h2>
+                <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show"
+                    aria-labelledby="panelsStayOpen-headingOne">
+                    <div class="accordion-body">
+                        <strong> Python is a high-level, general-purpose programming language. .</strong>Its design
+                        philosophy emphasizes code readability with the use of significant indentation. Its language
+                        constructs and object-oriented approach aim to help programmers write clear, logical code for
+                        small- and large-scale projects.[30]
+
+                        Python is dynamically-typed and garbage-collected. It supports multiple programming paradigms,
+                        including structured (particularly procedural), object-oriented and functional programming. It
+                        is often described as a "batteries included" language due to its comprehensive standard
+                        library.[31][32]
+
+                        Guido van Rossum began working on Python in the late 1980s as a successor to the ABC programming
+                        language and first released it in 1991 as Python 0.9.0.[33] Python 2.0 was released in 2000 and
+                        introduced new features such as list comprehensions, cycle-detecting garbage collection,
+                        reference counting, and Unicode support. Python 3.0, released in 2008, was a major revision that
+                        is not completely backward-compatible with earlier versions. Python 2 was discontinued with
+                        version 2.7.18 in 2020
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false"
+                        aria-controls="panelsStayOpen-collapseTwo">
+                        what is the django-framwork?
+                    </button>
+                </h2>
+                <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse"
+                    aria-labelledby="panelsStayOpen-headingTwo">
+                    <div class="accordion-body">
+                        <strong>Django is an MTV framework for building web applications.</strong>  Django helps web developers write clean, efficient, and powerful code. In addition to being on the list of the world's most popular web frameworks, Django is one of the most widely used technologies for web development. The framework has been used by Instagram, YouTube, Google and even NASA to develop their websites.
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false"
+                        aria-controls="panelsStayOpen-collapseThree">
+                        The ways of learning  django?
+                    </button>
+                </h2>
+                <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse"
+                    aria-labelledby="panelsStayOpen-headingThree">
+                    <div class="accordion-body">
+                        <strong>there is some ways to learn django.</strong> 1-django document 2-another web site like udemy 3-youtube 4-books 5-Attendance class 6-Virtual class
+                    </div>
+                </div>
+            </div>
+    </section>
+</div>
+<!--contact-->
+<div class="py-4 " id='contantpart' style="background-color: #aaabbe;">
+    <section class="container">
+        <h2 class='display-5 text-center mb-5'>Contact</h2>
+        <p class="text-center lead  mb-5">
+            you can contact us with these ways
+        </p>
+        <div class="row g-4 ">
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="rounded- p-4">
+                            <svg class="text-primary " xmlns="http://www.w3.org/2000/svg" width="45" height="45"
+                                fill="currentColor" class="bi bi-telephone" viewBox="0 0 16 16">
+                                <path
+                                    d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z" />
+                            </svg>
+                            <h2 class="mt-5">
+                                Email Us
+                            </h2>
+                            <p>
+                               <a class="text-decoration-none" href='mailto:masoud.rezae.dev@gmail.com' >masoud.rezae.dev@gmail.com</a>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="rounded p-4">
+                            <svg class="text-primary" xmlns="http://www.w3.org/2000/svg" width="45" height="45"
+                                fill="currentColor" class="bi bi-telephone" viewBox="0 0 16 16">
+                                <path
+                                    d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z" />
+                            </svg>
+                            <h2 class="mt-5">
+                                Call Us
+                            </h2>
+                            <p>
+                                098 938 *** 7*45
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <form action="">
+                    <div class="mb-3">
+                        <label for="contactFullname" class="form-label">Fullname</label>
+                        <input type="email" class="form-control" id="contactFullname" placeholder="firstname+lastname">
+                    </div>
+                    <div class="mb-3">
+                        <label for="ContactEmail" class="form-label">Email address</label>
+                        <input type="email" class="form-control" id="ContactEmail" placeholder="name@example.com">
+                    </div>
+                    <div class="mb-3">
+                        <label for="ContactComment" class="form-label">Your comment</label>
+                        <textarea class="form-control" id="ContactComment" rows="3"></textarea>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+</div>
+<!--footer-->
+<div class=" text-white  " style="background-color: #1f1c1c;">
+    <footer class="container pt-5">
+        <div class="row py-5">
+            <div class="col-md-3">
+                <h2 class=" mb-4">Web developer</h2>
+                <p>Good luck!</p>
+            </div>
+            <div class="col-md-3">
+                <h3 class="border-start border-4 ps-3 ">Pages</h3>
+                <ul class="list-unstyled mt-4">
+                    <li>
+                        <a class="text-decoration-none" href="">books</a>
+                    </li>
+                    <li>
+                        <a class="text-decoration-none" href="">tutorials</a>
+                    </li>
+                    <li>
+                        <a class="text-decoration-none" href="">Tips</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-3">
+                <h3 class="border-start border-4 ps-3 ">More</h3>
+                <ul class="list-unstyled mt-4">
+                    <li>
+                        <a class='text-decoration-none' href="">work</a>
+                    </li>
+                    <li>
+                        <a class='text-decoration-none' href="">contant</aclass=href=>
+                    </li>
+                    <li>
+                        <a class='text-decoration-none' href="">our team</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-3">
+                <h3 class="border-start border-4 ps-3 ">Posts</h3>
+                <ul class="list-unstyled mt-4">
+                    <li>
+                        <a class='text-decoration-none' href="">postgres</a>
+                    </li>
+                    <li>
+                        <a class='text-decoration-none' href="">python</a>
+                    </li>
+                    <li>
+                        <a class='text-decoration-none' href="">django</a>
+                    </li>
+                </ul>
+            </div>
+            <hr>
+            <div class="text-center"> Designed and Developed: <a href="">Masoud Rezaei</a></div>
+        </div>
+    </footer>
+</div>
+<!-- user show-->>
+<div class="py-4">
+    <div class="link-success p-5  fs-6">
+        {% if user.is_authenticated %}
+        Hi {{ user.email }}!
+        {% else %}
         <p>
             You are not logged in !
         </p>
         <a href="{% url 'account_login' %}">Log In website</a>
         <a href="{% url 'account_signup' %}">Sign Up website</a>
-    {% endif %}
+        {% endif %}
+    </div>
+</div>
 {% endblock content %}

@@ -4,10 +4,12 @@
     Sign Up
 {% endblock title %}
 {% block content %}
+<div class="w-25">
     <h2>Sign UP</h2>
-    <form method="post">
+    <form method="post" class=" forming">
         {% csrf_token %}
         {{ form|crispy }}
-        <button class="btn btn-success" type="submit">Sign Up</button>
+        <button class="btn btn-primary  rounded-pill " type="submit">Sign Up</button>
     </form>
+</div>    
 {% endblock content %}

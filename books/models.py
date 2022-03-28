@@ -5,6 +5,7 @@ from django.urls import reverse
 
 class Book(models.Model):
     title = models.CharField(db_index=True,max_length=200)
+    description = models.TextField(max_length=10000,null=True,blank=True)
     author = models.CharField(max_length=200)
     price = models.DecimalField(max_digits=6, decimal_places=2)
     cover=models.FileField(upload_to='covers/',blank=True)
